@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+
+import { Icon } from 'astro-icon'
+
+const pageTitle = "About Me";
+const identity = [
+    { title: 'Name', value: 'eowiz' },
+    { title: 'Address', value: 'Tokyo/Japan' },
+    { title: 'Employment', value: 'Software Engineer' },
+];
+
+const social = [
+{ type: 'twitter', url: 'https://twitter.com/eowizz' },
+{ type: 'github', url: 'https://github.com/eowiz' },
+];
+---
+<Layout title={pageTitle}>
+    <Navigation />
+    <main class="grid gap-1 place-content-center text-center my-8">
+        <h1 class="text-4xl font-bold mb-8">{pageTitle}</h1>
+        {identity.map(ident => 
+            <section class="mb-6">
+              <h2 class="text-2xl font-thin mb-2">{ident.title}</h2>
+              <p>{ident.value}</p>
+            </section>
+        )}
+        <section class="flex gap-6 place-content-center mt-6">
+            {social.map(icon => 
+                <a href={icon.url} target="_blank" rel="noopener" class="p-2">
+                    <Icon pack="codicon" name={icon.type} size={42} />
+                </a>
+            )}
+        </section>
+    </main>
+</Layout>
+

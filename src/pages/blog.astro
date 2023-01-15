@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Navigation from "../components/Navigation.astro";
+
+const pageTitle = "Blog";
+---
+
+<Layout title={pageTitle}>
+    <Navigation />
+    <main class="my-8">
+        <h1 class="text-4xl font-bold text-center">{pageTitle}</h1>
+    </main>
+</Layout>
