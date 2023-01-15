@@ -24,11 +24,11 @@ const { post } = Astro.props;
 const { frontmatter, Content } = post;
 ---
 
-<Layout title={slug}>
+<Layout title={frontmatter.title}>
     <Navigation />
     <main class="prose lg:prose-xl mx-4 my-12">
         <h1 class="text-4xl font-bold text-center my-8 mb-16">{frontmatter.title}</h1>
-        <section class="p-4">
+        <section class="pb-4">
             <Content />
         </section>
     </main>

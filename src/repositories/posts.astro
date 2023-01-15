@@ -38,6 +38,6 @@ export const all = async () => {
       },
       Content,
     }
-  });
+  }).sort((a, b) => -a.created_at.localeCompare(b.created_at));
 };
 ---
