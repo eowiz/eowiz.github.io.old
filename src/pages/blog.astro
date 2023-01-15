@@ -7,7 +7,7 @@ import { Icon } from 'astro-icon'
 
 const pageTitle = "Blog";
 
-const allPosts = await postRepository.list();
+const allPosts = await postRepository.all();
 ---
 
 <Layout title={pageTitle}>
@@ -22,7 +22,7 @@ const allPosts = await postRepository.list();
                         <span>{post.created_at}</span>
                     </div>
                     <div class="text-lg font-medium">
-                        <a class="hover:underline" href={`/posts/${post.slug}/`}>{post.frontmatter.title}</a>
+                        <a class="hover:underline" href={`/blog/${post.created_at}/${post.slug}/`}>{post.frontmatter.title}</a>
                     </div>
                     <div class="text-gray-600 text-sm mt-2">{post.frontmatter.description}</div>
                 </section>

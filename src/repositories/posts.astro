@@ -21,10 +21,10 @@ export const pathToPostRef = (path: string) => {
     };
 }
 
-export const list = async (): Promise<MarkdownFile[]> => {
-  const indexes = await Astro.glob("../../contents/posts/*/index.md");
+export const all = async () => {
+  const indexes = await Astro.glob("/contents/posts/*/index.md");
 
-  return indexes.map(({ file, frontmatter }) => {
+  return indexes.map(({ file, frontmatter, Content }) => {
     const postRef = pathToPostRef(file);
 
     return {
@@ -35,7 +35,8 @@ export const list = async (): Promise<MarkdownFile[]> => {
         description: frontmatter.description,
         tags: frontmatter.tags,
         updated_at: frontmatter.updated_at,
-      }
+      },
+      Content,
     }
   });
 };
