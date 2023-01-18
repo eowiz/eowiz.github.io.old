@@ -4,40 +4,44 @@ export type Frontmatter = {
   description: string;
   tags: string[];
   updated_at: string;
-}
+};
 
-export type MarkdownFile = {
+export type Markdown = {
   slug: string;
   created_at: string;
   frontmatter: Frontmatter;
 };
 
 export const pathToPostRef = (path: string) => {
-    const result = path.match(/\/(\d+-\d+-\d+)_([^/]+)\/index\.md$/);
+  const result = path.match(/\/(\d+-\d+-\d+)_([^/]+)\/index\.md$/);
 
-    return {
-        created_at: result[1],
-        slug: result[2],
-    };
-}
+  return {
+    created_at: result[1],
+    slug: result[2],
+  };
+};
 
 export const all = async () => {
-  const indexes = await Astro.glob("/contents/posts/*/index.md");
+  const markdowns = await Astro.glob("/contents/posts/*/index.md");
 
-  return indexes.map(({ file, frontmatter, Content }) => {
-    const postRef = pathToPostRef(file);
+  return markdowns
+    .map((markdown) => {
+      const { file, frontmatter } = markdown;
+      const postRef = pathToPostRef(file);
 
-    return {
-      slug: postRef.slug,
-      created_at: postRef.created_at,
-      frontmatter: {
-        title: frontmatter.title,
-        description: frontmatter.description,
-        tags: frontmatter.tags,
-        updated_at: frontmatter.updated_at,
-      },
-      Content,
-    }
-  }).sort((a, b) => -a.created_at.localeCompare(b.created_at));
+      return {
+        slug: postRef.slug,
+        created_at: postRef.created_at,
+        frontmatter: {
+          title: frontmatter.title,
+          description: frontmatter.description,
+          tags: frontmatter.tags,
+          updated_at: frontmatter.updated_at,
+        },
+        compiledContent: markdown.compiledContent,
+        Content: markdown.Content,
+      };
+    })
+    .sort((a, b) => -a.created_at.localeCompare(b.created_at));
 };
 ---
