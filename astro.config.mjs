@@ -4,9 +4,6 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import emoji from "remark-emoji";
 
-// https://astro.build/config
-import image from "@astrojs/image";
-
 import { markdownImagesPlugin } from "./plugins/markdown-images";
 
 // https://astro.build/config
