@@ -10,11 +10,6 @@ const identity = [
     { title: 'Address', value: 'Tokyo/Japan' },
     { title: 'Employment', value: 'Software Engineer' },
 ];
-
-const social = [
-    { type: 'twitter', url: 'https://twitter.com/eowizz' },
-    { type: 'github', url: 'https://github.com/eowiz' },
-];
 ---
 <Layout title={pageTitle}>
     <Navigation />
@@ -26,13 +21,6 @@ const social = [
               <p>{ident.value}</p>
             </section>
         )}
-        <section class="flex gap-6 place-content-center mt-6">
-            {social.map(icon => 
-                <a href={icon.url} target="_blank" rel="noopener" class="p-2">
-                    <Icon pack="codicon" name={icon.type} size={32} />
-                </a>
-            )}
-        </section>
     </main>
 </Layout>
 
