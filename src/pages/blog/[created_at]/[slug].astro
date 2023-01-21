@@ -4,6 +4,7 @@ import Navigation from "../../../components/Navigation.astro";
 import * as postRepository from "../../../repositories/posts.astro";
 
 import { Icon } from "astro-icon";
+import Giscus from "../../../components/Giscus.astro";
 
 export async function getStaticPaths() {
   const posts = await postRepository.all();
@@ -21,11 +22,9 @@ export async function getStaticPaths() {
   });
 }
 
-const { created_at, slug } = Astro.params;
 const { post } = Astro.props;
 const { frontmatter } = post;
 
-const content = post.compiledContent();
 const Content = post.Content;
 ---
 
@@ -38,28 +37,11 @@ const Content = post.Content;
       <span>{post.created_at}</span>
     </div>
     <section>
-      <Content />
+      <Content components={{ h2: 'h3' }} />
     </section>
-    <hr />
+    <div class="divider my-20">Comments</div>
     <section class="my-6">
-      <script
-        is:inline
-        src="https://giscus.app/client.js"
-        data-repo="eowiz/eowiz.github.io"
-        data-repo-id="R_kgDOIvsIcw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOIvsIc84CTn2Z"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="ja"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async
-      ></script>
+      <Giscus />
     </section>
   </main>
 </Layout>
