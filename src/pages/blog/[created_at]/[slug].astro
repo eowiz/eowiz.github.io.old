@@ -1,7 +1,6 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import Navigation from "../../../components/Navigation.astro";
-import * as CustomImage from "../../../components/Image.astro";
 import * as postRepository from "../../../repositories/posts.astro";
 
 import { Icon } from "astro-icon";
@@ -32,7 +31,7 @@ const Content = post.Content;
 
 <Layout title={frontmatter.title}>
   <Navigation />
-  <main class="prose lg:prose-xl mx-4 my-12">
+  <main class="prose lg:prose-xl px-4 mx-auto my-12">
     <h1 class="text-4xl font-bold text-center my-8">{frontmatter.title}</h1>
     <div class="flex justify-center items-center mb-16">
       <Icon class="inline mr-1" pack="codicon" name="calendar" size={16} />
