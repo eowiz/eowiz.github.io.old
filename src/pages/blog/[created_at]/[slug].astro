@@ -29,8 +29,7 @@ const Content = post.Content;
 ---
 
 <Layout title={frontmatter.title}>
-  <Navigation />
-  <main class="prose lg:prose-xl px-4 mx-auto my-12">
+  <div class="prose lg:prose-xl px-4 mx-auto my-12">
     <h1 class="text-4xl font-bold text-center my-8">{frontmatter.title}</h1>
     <div class="flex justify-center items-center mb-16">
       <Icon class="inline mr-1" pack="codicon" name="calendar" size={16} />
@@ -43,5 +42,5 @@ const Content = post.Content;
     <section class="my-6">
       <Giscus />
     </section>
-  </main>
+  </div>
 </Layout>

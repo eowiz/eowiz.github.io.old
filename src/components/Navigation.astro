@@ -6,10 +6,12 @@ const navigation = [
 ];
 ---
 
-<nav class="px-4 py-6">
-    <ol class="flex gap-10 font-bold">
-    {navigation.map(nav => 
-        <li class="inline hover:underline hover:decoration-2 hover:underline-offset-2"><a href={nav.url}>{nav.title}</a></li>
-    )}
-    </ol>
-</nav>
+<header class="px-4 py-6">
+    <nav class="max-w-3xl mx-auto">
+        <ol class="flex gap-10 font-bold">
+            {navigation.map(nav => 
+                <li class="inline hover:underline hover:decoration-2 hover:underline-offset-2"><a href={nav.url}>{nav.title}</a></li>
+            )}
+        </ol>
+    </nav>
+</header>
