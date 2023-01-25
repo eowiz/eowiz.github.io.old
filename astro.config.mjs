@@ -9,7 +9,8 @@ import { markdownImagesPlugin } from "./plugins/markdown-images";
 // https://astro.build/config
 export default defineConfig({
   markdown: {
-    extendDefaultPlugins: true,
+    smartypants: true,
+    gfm: true,
     remarkRehype: {
       allowDangerousHtml: true,
     },
