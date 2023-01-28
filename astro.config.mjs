@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 import emoji from "remark-emoji";
 
 import { markdownImagesPlugin } from "./plugins/markdown-images";
+import rehypeExternalLinks from "rehype-external-links";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
     remarkRehype: {
       allowDangerousHtml: true,
     },
+    rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]],
     remarkPlugins: [emoji],
   },
   integrations: [tailwind()],
