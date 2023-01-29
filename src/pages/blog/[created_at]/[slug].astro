@@ -1,10 +1,10 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import Navigation from "../../../components/Navigation.astro";
 import * as postRepository from "../../../repositories/posts.astro";
 
 import { Icon } from "astro-icon";
 import Giscus from "../../../components/Giscus.astro";
+import Breadcrumb, { BreadcrumbIcon } from "../../../components/Breadcrumb.astro";
 
 export async function getStaticPaths() {
   const posts = await postRepository.all();
@@ -27,25 +27,23 @@ const { post } = Astro.props;
 const { frontmatter } = post;
 
 const Content = post.Content;
+
+const breadcrumbs = [
+  {
+    icon: 'folder' as BreadcrumbIcon,
+    url: '/blog',
+    text: 'Blog',
+  },
+  {
+    icon: 'folder' as BreadcrumbIcon,
+    url: `/blog/${created_at}/${slug}/`,
+    text: frontmatter.title as string,
+  }
+];
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="px-4 text-sm breadcrumbs">
-    <ul>
-      <li>
-        <a href="/blog">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-          Blog
-        </a>
-      </li>
-      <li>
-        <a href={`/blog/${created_at}/${slug}/`}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-          {frontmatter.title}
-        </a>
-      </li>
-    </ul>
-  </div>
+  <Breadcrumb class="px-2" breadcrumbs={breadcrumbs} />
   <div class="prose lg:prose-xl px-4 mx-auto my-12">
     <h1 class="text-4xl font-bold text-center my-8">{frontmatter.title}</h1>
     <div class="flex justify-center items-center mb-16">

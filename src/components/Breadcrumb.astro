@@ -1,0 +1,34 @@
+---
+const BreadcrumbIcons = {
+    // ugly...
+    folder: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-2 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>',
+};
+
+export type BreadcrumbIcon = keyof typeof BreadcrumbIcons;
+
+export type Breadcrumb = {
+    icon: BreadcrumbIcon;
+    url: string;
+    text: string;
+};
+
+interface Props {
+    breadcrumbs: Breadcrumb[];
+    class?: string;
+};
+
+const { breadcrumbs, class: className } = Astro.props;
+---
+
+<div class={"text-sm breadcrumbs " + (className ?? "")}>
+    <ul>
+        {breadcrumbs.map(breadcrumb => 
+            <li>
+                <a href={breadcrumb.url}>
+                    <span set:html={BreadcrumbIcons[breadcrumb.icon]}></span>
+                    {breadcrumb.text}
+                </a>
+            </li>
+        )};
+    </ul>
+</div>
