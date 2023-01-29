@@ -1,22 +1,27 @@
 ---
 import Footer from '../components/Footer.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import Navigation from '../components/Navigation.astro';
 
 export interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <GoogleAnalytics />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    {description && <meta name="description" content={description}>}
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="rating" content="General">
   </head>
   <body class="flex flex-col align-center min-h-screen">
     <Navigation />
