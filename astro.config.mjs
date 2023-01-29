@@ -10,20 +10,29 @@ import rehypeExternalLinks from "rehype-external-links";
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
+  site: "https://eowiz.github.io",
   markdown: {
     smartypants: true,
     gfm: true,
     remarkRehype: {
-      allowDangerousHtml: true
+      allowDangerousHtml: true,
     },
-    rehypePlugins: [[rehypeExternalLinks, {
-      target: "_blank"
-    }]],
-    remarkPlugins: [emoji]
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: "_blank",
+        },
+      ],
+    ],
+    remarkPlugins: [emoji],
   },
-  integrations: [tailwind(), partytown()],
+  integrations: [tailwind(), partytown(), sitemap()],
   vite: {
-    plugins: [markdownImagesPlugin()]
-  }
+    plugins: [markdownImagesPlugin()],
+  },
 });
