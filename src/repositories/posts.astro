@@ -1,4 +1,6 @@
 ---
+import type { MarkdownInstance } from 'astro';
+
 export type Frontmatter = {
   title: string;
   description: string;
@@ -6,18 +8,23 @@ export type Frontmatter = {
   updated_at: string;
 };
 
-export type Markdown = {
-  slug: string;
+export type PostRef = {
   created_at: string;
-  frontmatter: Frontmatter;
+  slug: string;
 };
 
-export const pathToPostRef = (path: string) => {
+export type Markdown = {
+  ref: PostRef;
+  frontmatter: Frontmatter;
+  Content: MarkdownInstance<Record<string, any>>;
+};
+
+export const pathToPostRef = (path: string): PostRef => {
   const result = path.match(/\/(\d+-\d+-\d+)_([^/]+)\/index\.md$/);
 
   return {
-    created_at: result[1],
-    slug: result[2],
+    created_at: result![1],
+    slug: result![2],
   };
 };
 
@@ -30,18 +37,16 @@ export const all = async () => {
       const postRef = pathToPostRef(file);
 
       return {
-        slug: postRef.slug,
-        created_at: postRef.created_at,
+        postRef: postRef,
         frontmatter: {
           title: frontmatter.title,
           description: frontmatter.description,
           tags: frontmatter.tags,
           updated_at: frontmatter.updated_at,
         },
-        compiledContent: markdown.compiledContent,
         Content: markdown.Content,
       };
     })
-    .sort((a, b) => -a.created_at.localeCompare(b.created_at));
+    .sort((a, b) => -a.postRef.created_at.localeCompare(b.postRef.created_at));
 };
 ---

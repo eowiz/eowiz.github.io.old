@@ -4,7 +4,8 @@ import * as postRepository from "../../../repositories/posts.astro";
 
 import { Icon } from "astro-icon";
 import Giscus from "../../../components/Giscus.astro";
-import Breadcrumb, { BreadcrumbIcon } from "../../../components/Breadcrumb.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import type { BreadcrumbElement } from "../../../components/Breadcrumb.astro";
 
 export async function getStaticPaths() {
   const posts = await postRepository.all();
@@ -12,8 +13,8 @@ export async function getStaticPaths() {
   return posts.map((post) => {
     return {
       params: {
-        created_at: post.created_at,
-        slug: post.slug,
+        created_at: post.postRef.created_at,
+        slug: post.postRef.slug,
       },
       props: {
         post,
@@ -28,14 +29,14 @@ const { frontmatter } = post;
 
 const Content = post.Content;
 
-const breadcrumbs = [
+const breadcrumbs: BreadcrumbElement[] = [
   {
-    icon: 'folder' as BreadcrumbIcon,
+    icon: 'folder',
     url: '/blog',
     text: 'Blog',
   },
   {
-    icon: 'folder' as BreadcrumbIcon,
+    icon: 'folder',
     url: `/blog/${created_at}/${slug}/`,
     text: frontmatter.title as string,
   }

@@ -6,14 +6,14 @@ const BreadcrumbIcons = {
 
 export type BreadcrumbIcon = keyof typeof BreadcrumbIcons;
 
-export type Breadcrumb = {
+export type BreadcrumbElement = {
     icon: BreadcrumbIcon;
     url: string;
     text: string;
 };
 
 interface Props {
-    breadcrumbs: Breadcrumb[];
+    breadcrumbs: BreadcrumbElement[];
     class?: string;
 };
 
