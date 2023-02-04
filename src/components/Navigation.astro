@@ -1,34 +1,36 @@
 ---
 type Navigation = {
-    title: string;
-    url: string;
-}
+  title: string;
+  url: string;
+};
 
 const navigation = [
-    { title: 'Home', url: '/' },
-    { title: 'Blog', url: '/blog/' },
-    { title: 'About', url: '/about/' },
+  { title: "Home", url: "/" },
+  { title: "Blog", url: "/blog/" },
+  { title: "About", url: "/about/" },
 ];
 
-const pathname = new URL(Astro.request.url).pathname.split('/')[1];
+const pathname = new URL(Astro.request.url).pathname.split("/")[1];
 
-const isCurrentPage = (nav: Navigation): boolean => 
-    pathname === nav.url.replaceAll("/", "");
+const isCurrentPage = (nav: Navigation): boolean =>
+  pathname === nav.url.replaceAll("/", "");
 ---
 
 <header class="px-4 py-6">
-    <nav class="max-w-3xl mx-auto">
-        <ol class="flex gap-10 font-bold">
-            {navigation.map(nav => 
-                <li class:list={[
-                    "inline hover:underline decoration-2 underline-offset-4",
-                    { "underline": isCurrentPage(nav) }
-                ]}>
-                    <a href={nav.url}>
-                        {nav.title}
-                    </a>
-                </li>
-            )}
-        </ol>
-    </nav>
+  <nav class="max-w-3xl mx-auto">
+    <ol class="flex gap-10 font-bold">
+      {
+        navigation.map((nav) => (
+          <li
+            class:list={[
+              "inline hover:underline decoration-2 underline-offset-4",
+              { underline: isCurrentPage(nav) },
+            ]}
+          >
+            <a href={nav.url}>{nav.title}</a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
 </header>

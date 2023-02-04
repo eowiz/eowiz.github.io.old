@@ -1,22 +1,24 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const pageTitle = "About Me";
 const identity = [
-    { title: 'Name', value: 'eowiz' },
-    { title: 'Address', value: 'Tokyo/Japan' },
-    { title: 'Employment', value: 'Software Engineer' },
+  { title: "Name", value: "eowiz" },
+  { title: "Address", value: "Tokyo/Japan" },
+  { title: "Employment", value: "Software Engineer" },
 ];
 ---
-<Layout title={pageTitle}>
-    <main class="grid gap-1 place-content-center text-center my-8">
-        <h1 class="text-4xl font-bold mb-8">{pageTitle}</h1>
-        {identity.map(ident => 
-            <section class="mb-6">
-              <h2 class="text-2xl font-thin mb-2">{ident.title}</h2>
-              <p>{ident.value}</p>
-            </section>
-        )}
-    </main>
-</Layout>
 
+<Layout title={pageTitle}>
+  <main class="grid gap-1 place-content-center text-center my-8">
+    <h1 class="text-4xl font-bold mb-8">{pageTitle}</h1>
+    {
+      identity.map((ident) => (
+        <section class="mb-6">
+          <h2 class="text-2xl font-thin mb-2">{ident.title}</h2>
+          <p>{ident.value}</p>
+        </section>
+      ))
+    }
+  </main>
+</Layout>

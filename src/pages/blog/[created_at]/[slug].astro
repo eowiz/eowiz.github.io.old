@@ -31,15 +31,15 @@ const Content = post.Content;
 
 const breadcrumbs: BreadcrumbElement[] = [
   {
-    icon: 'folder',
-    url: '/blog',
-    text: 'Blog',
+    icon: "folder",
+    url: "/blog",
+    text: "Blog",
   },
   {
-    icon: 'folder',
+    icon: "folder",
     url: `/blog/${created_at}/${slug}/`,
     text: frontmatter.title as string,
-  }
+  },
 ];
 ---
 
@@ -52,7 +52,7 @@ const breadcrumbs: BreadcrumbElement[] = [
       <span>{post.created_at}</span>
     </div>
     <section>
-      <Content components={{ h2: 'h3' }} />
+      <Content components={{ h2: "h3" }} />
     </section>
     <div class="divider my-20">Comments</div>
     <section class="my-6">

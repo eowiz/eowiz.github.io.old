@@ -2,11 +2,17 @@
 import { G_TRACKING_ID } from "../config";
 ---
 
-<script type='text/partytown' async src={`https://www.googletagmanager.com/gtag/js?id=${G_TRACKING_ID}`}></script>
-<script type='text/partytown'>
+<script
+  type="text/partytown"
+  async
+  src={`https://www.googletagmanager.com/gtag/js?id=${G_TRACKING_ID}`}
+></script>
+<script type="text/partytown">
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
 
-  gtag('config', G_TRACKING_ID);
+  gtag("config", G_TRACKING_ID);
 </script>
