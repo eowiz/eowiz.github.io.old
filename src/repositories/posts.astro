@@ -28,6 +28,10 @@ export const pathToPostRef = (path: string): PostRef => {
   };
 };
 
+export const postRefToPath = (postRef: PostRef): string => {
+  return `${postRef.created_at}/${postRef.slug}`;
+}
+
 export const all = async () => {
   const markdowns = await Astro.glob("/contents/posts/*/index.md");
 
