@@ -1,22 +1,17 @@
 ---
-import type { MarkdownInstance } from "astro";
-
-export type Frontmatter = {
+export type Post = {
+  slug: string;
   title: string;
   description: string;
   tags: string[];
+  created_at: string;
   updated_at: string;
+  Content: unknown;
 };
 
 export type PostRef = {
   created_at: string;
   slug: string;
-};
-
-export type Markdown = {
-  ref: PostRef;
-  frontmatter: Frontmatter;
-  Content: MarkdownInstance<Record<string, any>>;
 };
 
 export const pathToPostRef = (path: string): PostRef => {
@@ -30,9 +25,9 @@ export const pathToPostRef = (path: string): PostRef => {
 
 export const postRefToPath = (postRef: PostRef): string => {
   return `${postRef.created_at}/${postRef.slug}`;
-}
+};
 
-export const all = async () => {
+export const all = async (): Promise<Post[]> => {
   const markdowns = await Astro.glob("/contents/posts/*/index.md");
 
   return markdowns
@@ -41,16 +36,15 @@ export const all = async () => {
       const postRef = pathToPostRef(file);
 
       return {
-        postRef: postRef,
-        frontmatter: {
-          title: frontmatter.title,
-          description: frontmatter.description,
-          tags: frontmatter.tags,
-          updated_at: frontmatter.updated_at,
-        },
+        slug: postRef.slug,
+        title: frontmatter.title,
+        description: frontmatter.description,
+        tags: frontmatter.tags,
+        created_at: postRef.created_at,
+        updated_at: frontmatter.updated_at,
         Content: markdown.Content,
       };
     })
-    .sort((a, b) => -a.postRef.created_at.localeCompare(b.postRef.created_at));
+    .sort((a, b) => -a.created_at.localeCompare(b.created_at));
 };
 ---

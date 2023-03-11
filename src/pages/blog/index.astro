@@ -24,20 +24,20 @@ const allPosts = await postRepository.all();
 
   <ol class="ml-16 relative text-gray-500 border-l border-gray-200">
     {
-      allPosts.map(({ frontmatter, postRef }) => (
+      allPosts.map((post) => (
         <li class="mb-12 ml-20">
           <span class="absolute flex items-center justify-center w-24 h-8 -left-10 bg-gray-200 rounded-full text-sm">
-            {postRef.created_at}
+            {post.created_at}
           </span>
           <h3 class="pt-1.5 font-medium text-black leading-tight">
             <a
               class="hover:underline"
-              href={`/blog/${postRef.created_at}/${postRef.slug}/`}
+              href={`/blog/${post.created_at}/${post.slug}/`}
             >
-              {frontmatter.title}
+              {post.title}
             </a>
           </h3>
-          <p class="text-sm">{frontmatter.description}</p>
+          <p class="text-sm">{post.description}</p>
         </li>
       ))
     }
