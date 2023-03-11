@@ -30,16 +30,19 @@ const { title, description } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=M+PLUS+Rounded+1c&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP@400,900&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="flex flex-col align-center min-h-screen">
-    <Navigation />
-    <main class="w-screen max-w-3xl mx-auto pt-8">
-      <slot />
-    </main>
-    <Footer />
+  <body class="flex align-center min-h-screen max-w-4xl mx-auto">
+    <div class="min-h-screen md:w-48 md:border-r"></div>
+    <div class="flex flex-col max-w-2xl w-screen mx-auto">
+      <Navigation />
+      <main class="pt-8">
+        <slot />
+      </main>
+      <Footer />
+    </div>
     <style is:global>
       html {
         font-family: "Noto Serif JP", serif;

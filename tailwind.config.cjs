@@ -1,4 +1,4 @@
 module.exports = {
   content: ["./src/**/*.{astro,css}"],
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [require("daisyui")],
 };

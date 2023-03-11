@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@astrojs/rss": "^2.1.1",
-    "@tailwindcss/typography": "^0.5.9",
     "change-case": "^4.1.2",
     "daisyui": "^2.50.0",
     "postcss-nesting": "^10.2.0",

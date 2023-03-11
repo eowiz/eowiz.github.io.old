@@ -23,7 +23,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { created_at, slug } =Astro.params;
+const { created_at, slug } = Astro.params;
 const { post } = Astro.props;
 
 const Content = post.Content;
@@ -44,14 +44,14 @@ const breadcrumbs: BreadcrumbElement[] = [
 
 <Layout title={post.title}>
   <Breadcrumb class="px-2" breadcrumbs={breadcrumbs} />
-  <div class="prose lg:prose-xl px-4 mx-auto my-12">
-    <h1 class="text-4xl font-bold text-center my-8">{post.title}</h1>
+  <div class="px-4 mx-auto my-12">
+    <h1 class="text-center my-8">{post.title}</h1>
     <div class="flex justify-center items-center mb-16">
       <Icon class="inline mr-1" pack="codicon" name="calendar" size={16} />
       <span>{post.created_at}</span>
     </div>
-    <section>
-      <Content components={{ h2: "h3" }} />
+    <section class="content">
+      <Content />
     </section>
     <div class="divider my-20">Comments</div>
     <section class="my-6">
@@ -61,17 +61,139 @@ const breadcrumbs: BreadcrumbElement[] = [
 </Layout>
 
 <style is:global>
-  img {
-    @apply p-6;
-    @apply rounded-lg shadow-md;
+  h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
   }
 
-  kbd {
-    @apply inline-block;
-    @apply text-sm font-semibold font-mono;
-    @apply px-1 py-1;
-    @apply border border-gray-400 rounded-lg;
-    @apply bg-gray-100;
-    @apply drop-shadow;
+  .content {
+    line-height: 1.85;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 700;
+      margin: 2rem 0 1rem 0;
+    }
+
+    h2 {
+      width: fit-content;
+
+      font-size: 1.5rem;
+      font-height: 2rem;
+
+      padding: 0.45rem 0 0 0;
+
+      border-bottom: 3px solid rgb(0, 0, 0);
+    }
+
+    h3 {
+      width: fit-content;
+
+      font-size: 1.25rem;
+      font-height: 1.75rem;
+
+      border-bottom: 2px double rgb(0, 0, 0);
+    }
+
+    h4 {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+
+      padding-left: 0.45rem;
+
+      border-left: 4px solid rgb(0, 0, 0);
+    }
+
+    h5 {
+    }
+
+    h6 {
+    }
+
+    p {
+      margin: 0.85em 0;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    ul,
+    ol {
+      margin: 0.35rem 0rem 0.35rem 1.5rem;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
+    li {
+      margin: 0.25rem;
+    }
+
+    blockquote {
+      margin: 2rem 0;
+      padding-left: 0.75rem;
+
+      color: rgb(107 114 128);
+
+      font-style: italic;
+      border-left: 3px solid rgb(107 114 128);
+    }
+
+    img {
+      @apply p-6;
+      @apply rounded-lg shadow-md;
+      @apply border;
+    }
+
+    pre {
+      font-size: 0.85rem;
+      padding: 0.85rem;
+      overflow: auto;
+
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 6px;
+    }
+
+    kbd {
+      @apply inline-block;
+      @apply text-sm font-semibold font-mono;
+      @apply px-1 py-1;
+      @apply border border-gray-400 rounded-lg;
+      @apply bg-gray-100;
+      @apply drop-shadow;
+    }
+
+    th, td {
+      padding: 0.5rem 1rem;
+
+      border: none;
+      border-top: 1px solid rgb(156 163 175);
+    }
+
+    tr:first-child td, tr:first-child th {
+      border-top: none;
+    }
+
+    thead {
+      background-color: rgb(229 231 235);    
+    }
+
+    table {
+      min-width: 100%;
+      
+      border-collapse: collapse;
+      border: none;
+      margin: 2rem 0;
+    }
   }
 </style>

@@ -18,6 +18,9 @@ export default defineConfig({
   markdown: {
     smartypants: true,
     gfm: true,
+    shikiConfig: {
+      theme: "github-light",
+    },
     remarkRehype: {
       allowDangerousHtml: true,
     },
