@@ -1,15 +1,26 @@
 ---
 import Layout from "../..//layouts/Layout.astro";
-import Navigation from "../../components/Navigation.astro";
+import type { BreadcrumbElement } from "../../components/Breadcrumb.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import * as postRepository from "../../repositories/posts.astro";
 
 const pageTitle = "Blog";
+
+const breadcrumbs: BreadcrumbElement[] = [
+  {
+    icon: "folder",
+    url: "/blog",
+    text: "Blog",
+  },
+];
 
 const allPosts = await postRepository.all();
 ---
 
 <Layout title={pageTitle}>
-  <h1 class="text-4xl font-bold text-center mb-16">{pageTitle}</h1>
+  <Breadcrumb class="px-2" breadcrumbs={breadcrumbs} />
+
+  <h1 class="text-4xl font-bold text-center my-12">{pageTitle}</h1>
 
   <ol class="ml-16 relative text-gray-500 border-l border-gray-200">
     {

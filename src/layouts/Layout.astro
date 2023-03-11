@@ -23,6 +23,10 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <meta name="rating" content="General" />
     <meta name="google-site-verification" content="JTBFlUsvehnt0ZF-Upbg7uE1WEULFbpYsb48XBRZnzY" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
   </head>
   <body class="flex flex-col align-center min-h-screen">
     <Navigation />
@@ -32,8 +36,7 @@ const { title, description } = Astro.props;
     <Footer />
     <style is:global>
       html {
-        font-family: system-ui, sans-serif;
-        background-color: #f6f6f6;
+        font-family: 'Noto Serif JP', serif;
       }
     </style>
   </body>
