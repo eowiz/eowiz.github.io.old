@@ -9,7 +9,7 @@ specifiers:
   astro-icon: ^0.8.0
   change-case: ^4.1.2
   daisyui: ^2.50.0
-  postcss-nesting: ^10.2.0
+  postcss-nesting: ^11.0.0
   prettier: ^2.8.4
   prettier-plugin-astro: ^0.8.0
   rehype-external-links: ^2.0.1
@@ -27,7 +27,7 @@ devDependencies:
   '@astrojs/rss': 2.1.1
   change-case: 4.1.2
   daisyui: 2.50.0
-  postcss-nesting: 10.2.0
+  postcss-nesting: 11.2.1
   prettier: 2.8.4
   prettier-plugin-astro: 0.8.0
   rehype-external-links: 2.0.1
@@ -2717,11 +2717,11 @@ packages:
       postcss: 8.4.21
       postcss-selector-parser: 6.0.11
 
-  /postcss-nesting/10.2.0:
-    resolution: {integrity: sha512-EwMkYchxiDiKUhlJGzWsD9b2zvq/r2SSubcRrgP+jujMXFzqvANLt16lJANC+5uZ6hjI7lpRmI6O8JIl+8l1KA==}
-    engines: {node: ^12 || ^14 || >=16}
+  /postcss-nesting/11.2.1:
+    resolution: {integrity: sha512-E6Jq74Jo/PbRAtZioON54NPhUNJYxVWhwxbweYl1vAoBYuGlDIts5yhtKiZFLvkvwT73e/9nFrW3oMqAtgG+GQ==}
+    engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      postcss: ^8.2
+      postcss: ^8.4
     dependencies:
       '@csstools/selector-specificity': 2.1.1_laljekdltgzr3kfi7r4exvsr5a
       postcss-selector-parser: 6.0.11
