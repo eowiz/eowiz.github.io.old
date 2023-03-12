@@ -30,7 +30,7 @@ const { title, description } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP@400,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP@400,900&family=Noto+Serif+JP@400&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -46,6 +46,10 @@ const { title, description } = Astro.props;
     <style is:global>
       html {
         font-family: "Noto Serif JP", serif;
+      }
+
+      code {
+        font-family: 'Source Code Pro', monospace;
       }
     </style>
   </body>
