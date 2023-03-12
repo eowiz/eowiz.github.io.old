@@ -44,7 +44,7 @@ const breadcrumbs: BreadcrumbElement[] = [
 
 <Layout title={post.title}>
   <Breadcrumb class="px-2" breadcrumbs={breadcrumbs} />
-  <div class="px-4 mx-auto my-12">
+  <div class="px-4 my-12">
     <h1 class="text-center my-8">{post.title}</h1>
     <div class="flex justify-center items-center mb-16">
       <Icon class="inline mr-1" pack="codicon" name="calendar" size={16} />
@@ -193,6 +193,22 @@ const breadcrumbs: BreadcrumbElement[] = [
       border-collapse: collapse;
       border: none;
       margin: 2rem 0;
+    }
+
+    aside {
+      display: none;
+    }
+
+    @media (min-width: 960px) {
+      aside {
+        display: block;
+        font-size: 0.75rem;
+        overflow-wrap: break-word;
+        position: absolute;
+        text-align: right;
+        margin-left: -14rem;
+        width: 10rem;
+      }
     }
   }
 </style>
