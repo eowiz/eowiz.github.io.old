@@ -18,15 +18,15 @@ const allPosts = await postRepository.all();
 ---
 
 <Layout title={pageTitle}>
-  <Breadcrumb class="px-2" breadcrumbs={breadcrumbs} />
+  <Breadcrumb class="px-4" breadcrumbs={breadcrumbs} />
 
-  <h1 class="text-4xl font-bold text-center my-12">{pageTitle}</h1>
+  <h1 class="px-4 text-4xl font-bold text-center my-12">{pageTitle}</h1>
 
-  <ol class="ml-16 relative text-gray-500 border-l border-gray-200">
+  <ol class="px-4 text-gray-500">
     {
       allPosts.map((post) => (
-        <li class="mb-12 ml-20">
-          <span class="absolute flex items-center justify-center w-24 h-8 -left-10 bg-gray-200 rounded-full text-sm">
+        <li class="mb-8">
+          <span class="text-sm">
             {post.created_at}
           </span>
           <h3 class="pt-1.5 font-medium text-black leading-tight">
