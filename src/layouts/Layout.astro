@@ -50,8 +50,12 @@ const { title, description } = Astro.props;
         font-size: calc(min(max(2vw, 14px), 16px));
       }
 
-      code {
+      pre, code, kbd {
         font-family: 'Source Code Pro', monospace;
+      }
+
+      code {
+        color: rgb(236 72 153);
       }
     </style>
   </body>
