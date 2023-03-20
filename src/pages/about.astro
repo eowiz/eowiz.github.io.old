@@ -1,16 +1,28 @@
 ---
+import type { BreadcrumbElement } from "../components/Breadcrumb.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
 import Layout from "../layouts/Layout.astro";
 
-const pageTitle = "About Me";
+const pageTitle = "About";
 const identity = [
   { title: "Name", value: "eowiz" },
   { title: "Address", value: "Tokyo/Japan" },
   { title: "Employment", value: "Software Engineer" },
 ];
+
+const breadcrumbs: BreadcrumbElement[] = [
+  {
+    icon: "folder",
+    url: "/about",
+    text: "About",
+  }
+];
 ---
 
 <Layout title={pageTitle}>
-  <h1 class="text-center text-4xl font-bold mb-8">{pageTitle}</h1>
+  <Breadcrumb class="px-2" breadcrumbs={breadcrumbs} />
+
+  <h1 class="text-center text-4xl font-bold py-8">{pageTitle}</h1>
   {
     identity.map((ident) => (
       <section class="text-center mb-6">

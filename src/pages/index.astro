@@ -1,10 +1,20 @@
 ---
+import Breadcrumb, { BreadcrumbElement } from "../components/Breadcrumb.astro";
 import Layout from "../layouts/Layout.astro";
 
 const pageTitle = "Home";
+
+const breadcrumbs: BreadcrumbElement[] = [
+  {
+    icon: "folder",
+    url: "/",
+    text: "Home",
+  }
+];
 ---
 
 <Layout title={pageTitle}>
-  <h1 class="text-4xl font-bold text-center mb-8">{pageTitle}</h1>
+  <Breadcrumb class="px-2" breadcrumbs={breadcrumbs} />
+  <h1 class="text-4xl font-bold text-center py-8">{pageTitle}</h1>
   <div class="max-w-md px-6 mx-auto"></div>
 </Layout>
