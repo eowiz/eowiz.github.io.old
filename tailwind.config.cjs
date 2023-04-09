@@ -6,4 +6,8 @@ module.exports = {
   },
   content: ["./src/**/*.{astro,css}"],
   plugins: [require("daisyui")],
+  daisyui: {
+    styled: false,
+    themes: false
+  }
 };
