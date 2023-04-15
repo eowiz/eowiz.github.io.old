@@ -11,7 +11,7 @@ export interface TransformResult {
   code: string;
 }
 
-const HTML_REGEX = /const\s+html\s+=\s+(".*");/;
+const HTML_REGEX = /const\s+html\s+=\s+updateImageReferences\((".*")\);/;
 const IMG_REGEX = /<img\s.*?(src=('|")(.*?)(\2)).*?>/g;
 
 function processHTMLContent(content: string, imgImports: string[]): string {
@@ -47,7 +47,7 @@ export function markdownImagesPlugin(): PluginOption {
             imgImports
           );
 
-          return `const html = \`${processedHTML}\`;`;
+          return `const html = updateImageReferences(\`${processedHTML}\`);`;
         });
 
         const finalCode = `${imgImports.join("\n")}\n${result}`;
