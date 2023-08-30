@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@astrojs/partytown':
     specifier: ^1.2.0
@@ -19,8 +23,8 @@ dependencies:
 
 devDependencies:
   '@astrojs/rss':
-    specifier: ^2.3.2
-    version: 2.3.2
+    specifier: ^3.0.0
+    version: 3.0.0
   change-case:
     specifier: ^4.1.2
     version: 4.1.2
@@ -118,10 +122,10 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/rss@2.3.2:
-    resolution: {integrity: sha512-R/nKOY7O48RQhD8d2i7yJBMS4sTHEHp17zFQIlrGfGXBHYKOOdyeF36UyjECSN3oglKwpi+vdGzQW/UGwJcNHg==}
+  /@astrojs/rss@3.0.0:
+    resolution: {integrity: sha512-PMX8iqByk9gtOrusikten/oF5uHjOCZigL6RuXFBUu+xtdKQxXzfIohJ99V2haA4FJjVDyibDTGzXR81POBMxQ==}
     dependencies:
-      fast-xml-parser: 4.2.0
+      fast-xml-parser: 4.2.7
       kleur: 4.1.5
     dev: true
 
@@ -1531,8 +1535,8 @@ packages:
       merge2: 1.4.1
       micromatch: 4.0.5
 
-  /fast-xml-parser@4.2.0:
-    resolution: {integrity: sha512-+zVQv4aVTO+o8oRUyRL7PjgeVo1J6oP8Cw2+a8UTZQcj5V0yUK5T63gTN0ldgiHDPghUjKc4OpT6SwMTwnOQug==}
+  /fast-xml-parser@4.2.7:
+    resolution: {integrity: sha512-J8r6BriSLO1uj2miOk1NW0YVm8AGOOu3Si2HQp/cSmo6EA4m3fcwu2WKjJ4RK9wMLBtg69y1kS8baDiQBR41Ig==}
     hasBin: true
     dependencies:
       strnum: 1.0.5
